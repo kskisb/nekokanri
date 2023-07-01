@@ -1,0 +1,44 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-5">
+        <h2 class="my-4">{{ post_data.name }}</h2>
+        <hr>
+        <p>性別：{{ post_data.sex|linebreaksbr }}</p>
+        <hr>
+        <p>生年月日：{{ post_data.birthday }}</p>
+        <hr>
+        {% if post_data.sex == "女の子" %}
+            {% if post_data.mated_at %}
+                <p>交配日：{{ post_data.mated_at }}</p>
+                <hr>
+                <p>出産予定日：{{ post_data.due_date }}</p>
+                <hr>
+            {% elif post_data.sex == '女の子' %}
+                <p>交配日：未定</p>
+                <hr>
+                {% endif %}
+        {% endif %}
+        <p>登録日時：{{ post_data.created_at }}</p>
+        <hr>
+        <p>飼い主：{{ post_data.owner }}</p>
+        <hr>
+    </div>
+    <div class="col-7">
+        {% if post_data.image %}
+            <img src="{{ post_data.image.url }}", class="rounded detail-img">
+        {% else %}
+            <img src="/media/cat3.jpg" class="rounded detail-img" alt="">
+        {% endif %}
+    </div>
+</div>
+{% if user.is_authenticated %}
+    <div class="d-flex mb-5">
+        <a href="{% url 'post_edit' post_data.id %}" class="btn btn-warning mr-2">編集する</a>
+        <a href="{% url 'post_delete' post_data.id %}" class="btn btn-danger">削除する</a>
+    </div>
+{% endif %}
+
+{% endblock %}

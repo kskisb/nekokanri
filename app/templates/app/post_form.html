@@ -1,0 +1,16 @@
+{% extends "app/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="my-4">
+    <h2>猫の情報を入力</h2>
+</div>
+
+<form class="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-warning" type="submit">登録する</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+
+<div class="row my-4">
+    <div class="col-lg-3">
+        <h2>ここで検索機能とか</h2>
+    </div>
+    <div class="col-lg-9">
+        <div class="row">
+            {% for post in post_data %}
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="card mb-3">
+                        {% if post.image %}
+                        <img src="{{ post.image.url }}" class="index-img" alt="">
+                        {% else %}
+                        <img src="/media/cat3.jpg" class="index-img" alt="">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.name }}</h5>
+                            <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">詳細</a>
+                        </div>
+                        <script>
+                            var screenWidth = getScreenWidth();
+                            if(screenWidth < 576) {
+                                document.write('<div class="card-footer text-muted my-auto">{{ post.created_at|date }} by {{ post.owner|truncatechars:20 }}</div>');
+                            } else if(screenWidth < 768) {
+                                document.write('<div class="card-footer text-muted my-auto">{{ post.created_at|date }} by {{ post.owner|truncatechars:5 }}</div>');
+                            } else if(screenWidth < 992) {
+                                document.write('<div class="card-footer text-muted my-auto">{{ post.created_at|date }} by {{ post.owner|truncatechars:20 }}</div>');
+                            } else if(screenWidth < 1200) {
+                                document.write('<div class="card-footer text-muted my-auto">{{ post.created_at|date }} by {{ post.owner|truncatechars:3 }}</div>');
+                            } else {
+                                document.write('<div class="card-footer text-muted my-auto">{{ post.created_at|date }} by {{ post.owner|truncatechars:9 }}</div>');
+                            }
+                        </script>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
