@@ -10,18 +10,12 @@
     {% bootstrap_javascript jquery='full' %}
     {{ form.media }}
 
-    <script>
-        function getScreenWidth() {
-            return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        }
-    </script>
-
-    <title>猫管理サイト</title>
+    <title>ねこかんり</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a href="/" class="navbar-brand">ねこ</a>
+            <a href="/" class="navbar-brand">ねこかんり</a>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="/" class="nav-link">ホーム</a>
@@ -53,7 +47,7 @@
     </main>
 
     <footer class="py-2 bg-dark"">
-        <p class="m-0 text-center text-white">Copyright &copy; ksib</p>
+        <p class="m-0 text-center text-white">Copyright &copy; kskisb</p>
     </footer>
 
     {% block extra_js %}

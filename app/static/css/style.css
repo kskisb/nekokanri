@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+.navbar-nav {
+    flex-direction: row;
+}
+
+.nav-item {
+    margin-right: 7px;
+}
+
 body {
     background: #f1f1f1;
     display: flex;
@@ -24,6 +32,18 @@ main {
     border: 0;
     border-radius: 1rem;
     box-shadow: 0 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.login {
+    height: 250px;
+}
+
+.logout {
+    height: 150px;
+}
+
+.signup {
+    height: 350px;
 }
 
 .card-title {
