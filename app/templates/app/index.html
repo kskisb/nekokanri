@@ -2,32 +2,26 @@
 
 {% block content %}
 
+<h2 class="my-4">ねこ一覧</h2>
 <div class="row my-4">
-    <div class="col-lg-3">
-        <h2>ここで検索機能（予定）</h2>
-    </div>
-    <div class="col-lg-9">
-        <div class="row">
-            {% for post in post_data %}
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="card mb-3">
-                        {% if post.image %}
-                        <img src="{{ post.image.url }}" class="index-img" alt="">
-                        {% else %}
-                        <img src="/app/media/cat3.jpg" class="index-img" alt="">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ post.name }}</h5>
-                            <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">詳細</a>
-                        </div>
-                        <div class="card-footer text-muted my-auto">
-                            {{ post.created_at|date }} by {{ post.owner|truncatechars:20 }}
-                        </div>
-                    </div>
+    {% for post in post_data %}
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card mb-3">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" class="index-img" alt="">
+                {% else %}
+                <img src="/app/media/cat3.jpg" class="index-img" alt="">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.name }}</h5>
+                    <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">詳細</a>
                 </div>
-            {% endfor %}
+                <div class="card-footer text-muted my-auto">
+                    {{ post.created_at|date }} by {{ post.owner|truncatechars:20 }}
+                </div>
+            </div>
         </div>
-    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
